@@ -6,7 +6,7 @@
 @char Character_1.normal
 
 Character_1: Glad to see you here, {PlayerName}
-Player: Let's begin our adventure
+Player: Let's begin
 
 @showUI QuestUI
 @setQuest text:"Quest Started"

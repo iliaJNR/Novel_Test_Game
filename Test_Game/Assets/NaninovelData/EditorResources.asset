@@ -207,3 +207,8 @@ MonoBehaviour:
       guid: 110e0f8ec98f1494494cf926d1a84a64
   - Id: Movies
     Resources: []
+  - Id: Audio
+    Resources:
+    - name: BackgroundMusic_
+      pathPrefix: Audio
+      guid: 6b728bae39a7c9041a2f0e6f39cea48d

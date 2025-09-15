@@ -24,7 +24,7 @@ MonoBehaviour:
   StableIdentification: 0
   InitializationScript: 
   TitleScript: title
-  StartGameScript: 
+  StartGameScript: Intro
   AutoAddScripts: 1
   HotReloadScripts: 1
   WatchScripts: 1

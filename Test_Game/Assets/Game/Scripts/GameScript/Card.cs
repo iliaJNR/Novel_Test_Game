@@ -14,6 +14,13 @@ public class Card : MonoBehaviour
     private Action<Card> onClick;
     private bool isAnimating = false;
 
+    private Vector3 originalScale;
+
+    private void Awake()
+    {
+        originalScale = transform.localScale;
+    }
+
     public void Init(Sprite sprite, Action<Card> callback)
     {
         CardSprite = sprite;
@@ -44,6 +51,7 @@ public class Card : MonoBehaviour
 
     public void HideInstant()
     {
+        transform.localScale = originalScale;
         frontFace.gameObject.SetActive(false);
         backFace.SetActive(true);
         IsRevealed = false;
@@ -60,8 +68,8 @@ public class Card : MonoBehaviour
         float duration = 0.15f;
         float elapsed = 0f;
 
-        Vector3 startScale = transform.localScale;
-        Vector3 midScale = new Vector3(0f, startScale.y, startScale.z);
+        Vector3 startScale = originalScale;
+        Vector3 midScale = new Vector3(0f, originalScale.y, originalScale.z);
 
         while (elapsed < duration)
         {
@@ -82,6 +90,8 @@ public class Card : MonoBehaviour
             await UniTask.Yield();
             elapsed += Time.deltaTime;
         }
+
+        transform.localScale = startScale;
     }
 
     private void OnMouseDown()
