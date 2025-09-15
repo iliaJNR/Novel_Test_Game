@@ -1,7 +1,7 @@
 @back Map_1
 @input PlayerName
 @char Player
-;@bgm BackMusic fade:1 loop:true
+@bgm BackgroundMusic_ fade:1 loop:true
 @waitForInput
 @char Character_1.normal
 
