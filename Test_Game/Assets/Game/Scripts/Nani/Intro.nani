@@ -1,0 +1,14 @@
+@back Map_1
+@input PlayerName
+@char Player
+;@bgm BackMusic fade:1 loop:true
+@waitForInput
+@char Character_1.normal
+
+Character_1: Glad to see you here, {PlayerName}
+Player: Let's begin our adventure
+
+@showUI QuestUI
+@setQuest text:"Quest Started"
+@NaniActive LocationName:Map_1
+@stop

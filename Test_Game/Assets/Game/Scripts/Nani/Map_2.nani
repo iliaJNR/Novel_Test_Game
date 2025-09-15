@@ -1,0 +1,21 @@
+@despawn InteractiveObject
+@back Map_2
+@hideUI MapUI
+
+@if !VisitedMap_2
+    @char Character_2.normal
+    Player: Nice Main hall.
+    Character_2: Hello, {PlayerName}! help me with one game please.
+    @MiniGame
+    Character_2: Now go and pick up the item in Meeting room.
+    @setQuest Text:"Pick up the item in Meeting room"
+    Player: Ok!
+    @char Character_2 visible:false time:0
+    @set VisitedMap_2=true
+@else
+    @print "You returned to Meeting room, but Lina has already left."
+@endif
+
+@showUI MapUI
+
+@stop

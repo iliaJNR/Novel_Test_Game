@@ -1,0 +1,82 @@
+@despawn InteractiveObject
+@back Map_1
+@char Character_1.normal
+@hideUI MapUI
+
+@if !VisitedMap_1
+    @char Character_2 visible:false time:0
+    @char Character_1.normal tint:#FFFFFF
+    Character_1: Hello, {PlayerName}! I have a quest for you.
+    Character_1: Head to Main hall to get your quest updated.
+    @setQuest text:"Go to Main hall"
+    
+    @char Character_1.normal tint:#FFFFFF
+    Player: Got it.
+    Player: Heading to Main hall.
+    
+    @set VisitedMap_1=true
+
+@elseif Take_Item
+    @goto .ChoiceLabel
+
+@else
+    @char Character_1.normal tint:#FFFFFF
+    Character_1: You've already been here, {PlayerName}.
+@endif
+
+@char Character_1 visible:false time:0
+@showUI MapUI
+@stop
+
+
+# ChoiceLabel
+
+@char Character_1 look:right tint:#FFFFFF
+@char Character_2 look:left visible:true tint:#808080
+
+@print "You brought the ribbon. Who will you give it to?"
+@hideUI QuestUI1
+
+@choice "Give it to Monika" set:finalChoice=1
+@choice "Give it to Lina" set:finalChoice=2
+@choice "Keep it for yourself" set:finalChoice=3
+
+@print "You must make a choice."
+
+
+@if finalChoice==1
+    @hideUI QuestUI
+    @char Character_1.normal tint:#FFFFFF
+    @char Character_2 tint:#808080
+    Character_1.normal: "Thank you, I'm happy!"
+    
+    @char Character_1.normal tint:#808080
+    @char Character_2.mad tint:#FFFFFF
+    Character_2.mad: What?! He gave the item to Monika!
+
+@elseif finalChoice==2
+    @hideUI QuestUI
+    @char Character_1.normal tint:#808080
+    @char Character_2.normal tint:#FFFFFF
+    Character_2.normal: Thank you, I'm happy!
+    
+    @char Character_2.normal tint:#808080
+    @char Character_1.mad tint:#FFFFFF
+    Character_1.mad: What?! You gave the item to Lina!
+
+@elseif finalChoice==3
+    @hideUI QuestUI
+    @char Character_2.mad tint:#808080
+    @char Character_1.mad tint:#FFFFFF
+    Character_1.mad: He kept the item for himself…
+    
+    @char Character_1.mad tint:#808080
+    @char Character_2.mad tint:#FFFFFF
+    Character_2.mad: How could you!
+@endif
+
+@print "The End!"
+
+@showUI MapUI
+@stop
+

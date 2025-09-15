@@ -1,0 +1,19 @@
+@char Character_1 visible:false time:0.1
+@char Character_2 visible:false time:0.1
+@hideUI MapUI
+@back Map_3
+
+@if !VisitedMap_3 && !Take_Item
+    @spawn InteractiveObject
+    @print "You see an item in this room."
+    @print "Take it and give it to someone."
+    @set Visited_Location3=true
+@elseif !Take_Item
+    @spawn InteractiveObject
+    @print "You came back here and the ribbon is here again."
+@else
+    Hokaru: You've already been here, {PlayerName}.
+@endif
+
+@showUI MapUI
+@stop
